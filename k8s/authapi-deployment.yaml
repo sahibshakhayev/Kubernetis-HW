@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authdemoapi-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: authdemoapi
+  template:
+    metadata:
+      labels:
+        app: authdemoapi
+    spec:
+      containers:
+      - name: authdemoapi
+        image: sahibshakhayev/authdemoapi:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
